@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo de Colores | Fiestas Infantiles Mágicas</title>
+  <meta name="description" content="Animación profesional para fiestas infantiles con experiencias únicas y creativas">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF7AA2; /* Rosa pastel */
+      --secondary: #6DC5D1; /* Turquesa claro */
+      --accent: #FFB347; /* Naranja pastel */
+      --light: #FFF9F2; /* Blanco cálido */
+      --dark: #3A3D57; /* Azul oscuro */
+      --white: #FFFFFF;
+      --font-primary: 'Poppins', sans-serif;
+      --font-title: 'Fredoka One', cursive;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-title);
+      color: var(--dark);
+      line-height: 1.2;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(255, 122, 162, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 122, 162, 0.4);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(109, 197, 209, 0.3);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(109, 197, 209, 0.4);
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      display: inline-block;
+      position: relative;
+      color: var(--dark);
+    }
+
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: all 0.3s ease;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    header.scrolled {
+      padding: 15px 0;
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover img {
+      transform: rotate(10deg);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+      position: relative;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover:after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px auto;
+      background-color: var(--dark);
+      transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      min-height: 800px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(255, 249, 242, 0.9) 0%, rgba(255, 249, 242, 0.7) 100%);
+    }
+
+    .hero-logo {
+      position: absolute;
+      right: 12%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      z-index: 1;
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    }
+
+    .hero:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100%;
+      background: url('imagenes/hero-kids.png') no-repeat right center/contain;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      color: var(--dark);
+    }
+
+    .hero-content h1 span {
+      color: var(--primary);
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--dark);
+      opacity: 0.9;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .hero-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+    }
+
+    .shape-1 {
+      width: 600px;
+      height: 600px;
+      background-color: var(--primary);
+      top: -300px;
+      right: -300px;
+    }
+
+    .shape-2 {
+      width: 400px;
+      height: 400px;
+      background-color: var(--secondary);
+      bottom: -200px;
+      left: -200px;
+    }
+
+    /* About Section - Mejorada */
+    .about {
+      background-color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+    }
+
+    .about-gallery {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-gallery img {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  width: 63%;
+  margin-left: 17%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  box-shadow: 7px 7px 12px rgba(108, 98, 44, 0.858);
+}
+
+
+    .about-image {
+      flex: 1;
+      position: relative;
+      min-height: 500px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      border-radius: 15px;
+    }
+
+    .about-image img:first-child {
+      flex: 1;
+      max-height: 60%;
+      object-position: top;
+    }
+
+    .about-image img:last-child {
+      flex: 1;
+      max-height: 40%;
+      object-position: bottom;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .about-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .about-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: var(--dark);
+      opacity: 0.8;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px;
+      margin-top: 30px;
+    }
+
+    .feature {
+      background-color: var(--light);
+      padding: 25px;
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .feature i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      font-family: var(--font-primary);
+      font-weight: 600;
+    }
+
+    /* Services Section */
+    .services {
+      background-color: var(--light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-image {
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.1);
+    }
+
+    .service-content {
+      padding: 25px;
+    }
+
+    .service-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .service-content p {
+      margin-bottom: 20px;
+      color: var(--dark);
+      opacity: 0.8;
+    }
+
+    .service-price {
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .service-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--white);
+    }
+
+    .testimonials-slider {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .testimonial-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      border: 5px solid var(--light);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--dark);
+      opacity: 0.9;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Contact Section - Mejorada con Mapa */
+    .contact {
+      background-color: var(--light);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .contact-details {
+      margin-bottom: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-item i {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 1rem;
+    }
+
+    .contact-map {
+      width: 100%;
+      height: 300px;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 4px solid;
+      border-image: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent)) 1;
+      animation: borderAnimation 8s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes borderAnimation {
+      0% { border-image-source: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent)); }
+      50% { border-image-source: linear-gradient(45deg, var(--secondary), var(--accent), var(--primary)); }
+      100% { border-image-source: linear-gradient(45deg, var(--accent), var(--primary), var(--secondary)); }
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .contact-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .contact-social a {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .contact-social a:hover {
+      background-color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .contact-form {
+      background-color: var(--white);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      background-color: #f9f9f9;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background-color: var(--white);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 80px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo img {
+      height: 100px;
+      margin-right: 10px;
+    }
+
+    .footer-about p {
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .footer-links h3,
+    .footer-services h3,
+    .footer-newsletter h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h3:after,
+    .footer-services h3:after,
+    .footer-newsletter h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary);
+      border-radius: 2px;
+    }
+
+    .footer-links ul,
+    .footer-services ul {
+      list-style: none;
+    }
+
+    .footer-links li,
+    .footer-services li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a,
+    .footer-services a {
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover,
+    .footer-services a:hover {
+      opacity: 1;
+      color: var(--primary);
+      padding-left: 5px;
+    }
+
+    .newsletter-form input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 50px;
+      margin-bottom: 15px;
+      font-family: var(--font-primary);
+    }
+
+    .newsletter-form button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 50px;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background-color: var(--accent);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Floating Button */
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 20px rgba(255, 122, 162, 0.4);
+      z-index: 999;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .floating-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      background-color: var(--accent);
+    }
+
+    .floating-btn i {
+      font-size: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .hero:before {
+        width: 70%;
+        opacity: 0.6;
+      }
+      
+      .hero-logo {
+        width: 250px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .section {
+        padding: 80px 0;
+      }
+
+      .hero:before {
+        width: 80%;
+        opacity: 0.4;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero-logo {
+        width: 200px;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+
+      .about-image {
+        min-height: auto;
+        width: 100%;
+        flex-direction: row;
+      }
+
+      .about-image img {
+        width: 50%;
+        height: auto;
+      }
+
+      .about-image img:first-child,
+      .about-image img:last-child {
+        max-height: none;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        height: 100vh;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.5s ease;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .hero {
+        min-height: 700px;
+      }
+
+      .hero:before {
+        display: none;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-logo {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin: 30px auto;
+        width: 180px;
+      }
+
+      .section-title h2 {
+        font-size: 2.3rem;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-map {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+      }
+
+      .about-image {
+        flex-direction: column;
+      }
+
+      .about-image img {
+        width: 100%;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-map {
+        height: 200px;
+      }
+    }
+
+    .firework {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none; /* Para que no interfiera con otros elementos */
+    animation: fireworkFade 2s ease-out forwards;
+}
+
+@keyframes fireworkFade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+    
+  </style>
+
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo" id="logo-title">
+          <img src="imagenes/arcoiris.png" alt="Mundo de Colores">
+          Mundo de Colores
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#about">Nosotros</a></li>
+          <li><a href="#services">Servicios</a></li>
+          <li><a href="#testimonials">Testimonios</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Crea <span>momentos mágicos</span> para tus pequeños</h1>
+        <p>En Mundo de Colores transformamos tus fiestas infantiles en experiencias inolvidables con animación profesional, juegos creativos y mucha diversión.</p>
+        <div class="hero-buttons">
+          <a href="#services" class="btn btn-primary">Nuestros Servicios</a>
+          <a href="#contact" class="btn btn-secondary">Contactar Ahora</a>
+        </div>
+      </div>
+      <div class="hero-logo">
+        <img src="imagenes/logo-v3.png" alt="de Colón ANIMACIONES">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section - Mejorada -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sobre Nosotros</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-gallery">
+          <img src="imagenes/asuncion.jpeg" alt="Equipo Mundo de Colores trabajando con niños" loading="lazy" style="object-position: top;">
+          <img src="imagenes/amiga.jpeg" alt="Animadora de Mundo de Colores en una fiesta infantil" loading="lazy" style="object-position: bottom;">
+        </div>
+        <div class="about-text">
+          <h2>Más que animadores, creadores de sonrisas</h2>
+          <p>Desde 2010, nos dedicamos a hacer que cada fiesta infantil sea única y especial. Nuestro equipo de profesionales está comprometido con crear experiencias que los niños recordarán por siempre.</p>
+          <p>Con creatividad, energía y mucho amor, diseñamos actividades que no solo entretienen, sino que también inspiran y fomentan la imaginación de los más pequeños.</p>
+          <div class="about-features">
+            <div class="feature">
+              <i class="fas fa-child"></i>
+              <h3>Diversión Garantizada</h3>
+              <p>Juegos y actividades diseñadas para todas las edades</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-shield-alt"></i>
+              <h3>Seguridad Primero</h3>
+              <p>Materiales y prácticas seguras para tranquilidad de los padres</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-magic"></i>
+              <h3>Creatividad</h3>
+              <p>Actividades originales que estimulan la imaginación</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-heart"></i>
+              <h3>Amor por lo que hacemos</h3>
+              <p>Pasión que se refleja en cada detalle de tu evento</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nuestros Servicios</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-image">
+            <img src="imagenes/v2-manualidades.jpeg" alt="Taller de Manualidades">
+          </div>
+          <div class="service-content">
+            <span class="service-tag">Popular</span>
+            <h3>Taller de Manualidades</h3>
+            <p>Actividades creativas donde los niños pueden expresar su arte y llevarse un recuerdo especial de la fiesta.</p>
+            <div class="service-price">$100 USD</div>
+            <a href="#contact" class="btn btn-primary">Reservar Ahora</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="imagenes/animacio-v2.jpeg" alt="Animación Infantil">
+          </div>
+          <div class="service-content">
+            <!-- <span class="service-tag">Más solicitado</span> -->
+            <h3>Animación Infantil</h3>
+            <p>Juegos, bailes y actividades dirigidas por nuestros animadores profesionales para horas de diversión.</p>
+            <div class="service-price">$150 USD</div>
+            <a href="#contact" class="btn btn-primary">Reservar Ahora</a>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-image">
+            <img src="imagenes/cara.jpeg" alt="Pinta Caras">
+          </div>
+          <div class="service-content">
+            <!-- <span class="service-tag">Favorito</span> -->
+            <h3>Pinta Caras</h3>
+            <p>Transformamos a los niños en sus personajes favoritos con diseños creativos y materiales hipoalergénicos.</p>
+            <div class="service-price">$120 USD</div>
+            <a href="#contact" class="btn btn-primary">Reservar Ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Lo que dicen los padres</h2>
+      </div>
+      <div class="testimonials-slider">
+        <div class="testimonial">
+          <div class="testimonial-avatar">
+            <img src="imagenes/p3.png" alt="María González">
+          </div>
+          <p class="testimonial-text">"Contratamos a Mundo de Colores para el cumpleaños de mi hija y fue increíble. Los niños no pararon de reír y jugar. ¡Los recomiendo 100%!"</p>
+          <p class="testimonial-author"></p>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-avatar">
+            <img src="imagenes/p1.png" alt="Carlos Martínez">
+          </div>
+          <p class="testimonial-text">"El show de magia fue el punto culminante de la fiesta. Los niños quedaron fascinados y los adultos también disfrutamos mucho."</p>
+          <p class="testimonial-author"></p>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-avatar">
+            <img src="imagenes/p2.png" alt="Laura Sánchez">
+          </div>
+          <p class="testimonial-text">"Las manualidades que hicieron fueron tan lindas que los niños las conservan como recuerdo. Profesionales, puntuales y muy creativos."</p>
+          <p class="testimonial-author"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section - Mejorada con Mapa -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>Contáctanos</h2>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>¿Listo para una fiesta inolvidable?</h3>
+        <p>Completa el formulario o contáctanos directamente para reservar tu fecha o resolver cualquier duda sobre nuestros servicios.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>(123) 456-7890</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>info@mundodecolores.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>San José de la Rinconada, Sevilla, Andalucía</span>
+          </div>
+        </div>
+        <!-- Mapa de Google Maps -->
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.724034036098!2d-5.980851924014692!3d37.48786837209293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126c8e4a9a49a5%3A0x9e8e8a7a8a8a8a8a!2sSan%20Jos%C3%A9%20de%20la%20Rinconada%2C%20Sevilla%2C%20Espa%C3%B1a!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <br>
+        <div class="contact-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/mundodecolores_animaciones/"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Nombre Completo *</label>
+            <input type="text" id="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo Electrónico *</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Teléfono</label>
+            <input type="tel" id="phone">
+          </div>
+          <div class="form-group">
+            <label for="service">Servicio de Interés</label>
+            <select id="service">
+              <option value="">Selecciona un servicio</option>
+              <option value="manualidades">Taller de Manualidades</option>
+              <option value="personajes">Personajes Temáticos</option>
+              <option value="animacion">Animación Infantil</option>
+              <option value="magia">Show de Magia</option>
+              <option value="paquete">Paquete Completo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje *</label>
+            <textarea id="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <img src="imagenes/logo.png" alt="Mundo de Colores">
+            Mundo de Colores
+          </div>
+          <p>Creando momentos mágicos y recuerdos inolvidables para tus fiestas infantiles desde 2010.</p>
+          <p>Profesionales certificados en animación infantil con un enfoque en seguridad y diversión creativa.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Enlaces Rápidos</h3>
+          <ul>
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#about">Sobre Nosotros</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#testimonials">Testimonios</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-services">
+          <h3>Nuestros Servicios</h3>
+          <ul>
+            <li><a href="#services">Taller de Manualidades</a></li>
+            <li><a href="#services">Personajes Temáticos</a></li>
+            <li><a href="#services">Animación Infantil</a></li>
+            <li><a href="#services">Show de Magia</a></li>
+            <li><a href="#services">Paquetes Personalizados</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <p>Suscríbete para recibir promociones especiales y consejos para fiestas infantiles.</p>
+          <br>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Tu correo electrónico">
+            <button type="submit">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Mundo de Colores. Todos los derechos reservados.</p>
+        <p><a href="#">Política de Privacidad</a> | <a href="#">Términos y Condiciones</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Button -->
+  <div class="floating-btn" id="floatingBtn">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+
+  <script>
+    // Mobile Navigation
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links li');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Sticky Header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Testimonials Slider (simplified)
+    let currentTestimonial = 0;
+    const testimonials = document.querySelectorAll('.testimonial');
+    
+    function showTestimonial(index) {
+      testimonials.forEach(testimonial => {
+        testimonial.style.display = 'none';
+      });
+      testimonials[index].style.display = 'block';
+    }
+    
+    function nextTestimonial() {
+      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(currentTestimonial);
+    }
+    
+    // Initialize
+    showTestimonial(0);
+    setInterval(nextTestimonial, 10000);
+
+    // Form Submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Here you would typically send the data to a server
+        console.log('Form submitted:', { name, email, message });
+        
+        // Show success message
+        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+        
+        // Reset form
+        this.reset();
+      });
+    }
+
+    // Floating Button
+    const floatingBtn = document.getElementById('floatingBtn');
+    floatingBtn.addEventListener('click', () => {
+      alert('¡Hola! ¿En qué podemos ayudarte? Puedes contactarnos al (123) 456-7890 o por WhatsApp.');
+    });
+
+    const logoTitle = document.getElementById('logo-title');
+
+logoTitle.addEventListener('click', () => {
+    for (let i = 0; i < 50; i++) {
+        createFirework();
+    }
+});
+
+function createFirework() {
+    const firework = document.createElement('div');
+    firework.classList.add('firework');
+    document.body.appendChild(firework);
+
+    const size = Math.random() * 10 + 5;
+    firework.style.width = `${size}px`;
+    firework.style.height = `${size}px`;
+    firework.style.background = getRandomColor();
+    firework.style.left = `${Math.random() * 100}vw`;
+    firework.style.top = `${Math.random() * 100}vh`;
+
+    setTimeout(() => {
+        firework.remove();
+    }, 2000);
+}
+
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+  </script>
+</body>
+</html>
